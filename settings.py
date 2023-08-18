@@ -1,11 +1,12 @@
 import pygame
 
 pygame.init()
+clock = pygame.time.Clock()
 
 # Colours
 GRAY = (172, 189, 186)
 AZURE = (205, 221, 221)
-ROSEQ = (165, 152, 181)
+ROSEQ = (165, 153, 181)
 JET = (46, 47, 47)
 BLACK = (5, 16, 20)
 
@@ -18,7 +19,7 @@ pygame.display.set_caption("Tetris!! - Group 33")
 # Game Specifics
 FPS = 60
 TITLEFONT = pygame.font.SysFont("showcardgothic", 80)
-TITLEFONTCOLOUR = AZURE
+TITLEFONTCOLOUR = ROSEQ
 
 
 
