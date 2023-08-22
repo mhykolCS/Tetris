@@ -4,9 +4,8 @@ from pgfunctions import *
 
 
 def load_configure_surface():
-
-    clock = pygame.time.Clock()
     return_image = pygame.image.load("assets/return_button.png").convert_alpha()
+    return_button_clicked_down = False
 
     while True:
         clock.tick(FPS)
@@ -19,5 +18,10 @@ def load_configure_surface():
                 pygame.quit()
                 return 1
 
-        if return_button.click_event():
-            return 0
+        if return_button_clicked_down:
+            return_button_clicked_down = False
+            if return_button.click_release():
+                WINDOW.fill(BLACK)
+                return 0
+        if return_button.click_down() and not return_button_clicked_down:
+            return_button_clicked_down = True

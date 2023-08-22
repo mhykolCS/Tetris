@@ -35,40 +35,35 @@ def load_startup_surface():
         configure_game_button = Button(SURFACE_WIDTH / 2, 550, 1, configure_image)
         exit_game_button = Button(SURFACE_WIDTH / 2, 650, 1, exit_game_image)
 
-        if exit_game_button.click_down():
-            print("Reached 1")
-            exit_game_clicked_down = True
+        if play_game_clicked_down:
+            play_game_clicked_down = False
+            if play_game_button.click_release():
+                WINDOW.fill(BLACK)
+                load_game_surface()
+        if play_game_button.click_down() and not play_game_clicked_down:
+            play_game_clicked_down = True
+
+        if top_scores_clicked_down:
+            top_scores_clicked_down = False
+            if top_scores_button.click_release():
+                WINDOW.fill(BLACK)
+                load_topscore_surface()
+        if top_scores_button.click_down() and not top_scores_clicked_down:
+            top_scores_clicked_down = True
+
+        if configure_clicked_down:
+            configure_clicked_down = False
+            if configure_game_button.click_release():
+                WINDOW.fill(BLACK)
+                load_configure_surface()
+        if configure_game_button.click_down() and not configure_clicked_down:
+            configure_clicked_down = True
 
         if exit_game_clicked_down:
-            print("Reached 2")
+            exit_game_clicked_down = False
             if exit_game_button.click_release():
-                print("Reached 3")
-                WINDOW.FILL(BLACK)
-                if load_configure_surface():
-                    break
-            else:
-                print("Reached 4")
-                exit_game_clicked_down = False
-
-
-
-
-        # if exit_game_button.click_down():
-        #     break
-        # elif configure_game_button.click_down():
-        #     WINDOW.fill(BLACK)
-        #     if load_configure_surface():
-        #         break
-        # elif top_scores_button.click_down():
-        #     WINDOW.fill(BLACK)
-        #     if load_topscore_surface():
-        #         break
-        # elif play_game_button.click_down():
-        #     WINDOW.fill(BLACK)
-        #     if load_game_surface():
-        #         break
-        # else:
-        #     pass
-
+                break
+        if exit_game_button.click_down() and not exit_game_clicked_down:
+            exit_game_clicked_down = True
 
     pygame.quit()

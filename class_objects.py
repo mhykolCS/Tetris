@@ -18,9 +18,11 @@ class Button:
 
     def click_release(self):
         mouse_position = pygame.mouse.get_pos()
+        if not pygame.mouse.get_pressed()[0]:
+            return True
+
         if not self.rect.collidepoint(mouse_position):
             return False
 
-        if not pygame.mouse.get_pressed()[0]:
-            return True
+
 
