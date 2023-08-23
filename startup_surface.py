@@ -28,7 +28,7 @@ def load_startup_surface():
                 pygame.quit()
 
         WINDOW.fill(BLACK)
-        title_text = draw_text("TETRIS", TITLEFONT, TITLEFONTCOLOUR, SURFACE_WIDTH / 2, 80)
+        title_text = draw_text("TETRIS", TITLE_FONT, TITLE_FONT_COLOUR, SURFACE_WIDTH / 2, 80)
 
         play_game_button = Button(SURFACE_WIDTH / 2, 300, 1, play_game_image)
         top_scores_button = Button(SURFACE_WIDTH / 2, 450, 1, top_scores_image)
