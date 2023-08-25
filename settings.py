@@ -19,6 +19,7 @@ pygame.display.set_caption("Tetris!! - Group 33")
 # Game Specifics
 FPS = 60
 TITLE_FONT = pygame.font.SysFont("showcardgothic", 80)
+REGULAR_FONT = pygame.font.SysFont("impact", 18)
 TITLE_FONT_COLOUR = ROSE_Q
 
 GAME_W = 10
