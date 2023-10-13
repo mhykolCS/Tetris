@@ -150,18 +150,20 @@ def load_game_surface():
                     pygame.draw.rect(WINDOW, GRAY, old)
 
         # Clear Lines
-            for row in range(GAME_H-1, 0, -1):
-                count = 0
-                for column in range(GAME_W):
-                    if game_field[column][row]:
-                        count += 1
-                    else:
-                        count = 0
+        for row in range(GAME_H-1, 0, -1):
+            count = 0
+            for column in range(GAME_W):
+                if game_field[column][row]:
+                    count += 1
+                else:
+                    count = 0
 
-                if count == 10:
+            if count == 10:
+                for row_overwrite in range(row, 0, -1):
                     for column_overwrite in range(GAME_W):
-                        game_field[column_overwrite][row] = 0
-                    
+                        game_field[column_overwrite][row_overwrite] = 0
+                        game_field[column_overwrite][row_overwrite] = game_field[column_overwrite][row_overwrite-1]
+                        
 
         if escape_screen_active:
             clock_count = 0
