@@ -15,9 +15,10 @@ def load_game_surface():
     game_field = list(list(0 for h in range(GAME_H))for W in range(GAME_W))
     score_int = 0
     lines_eliminated_int = 0
-    current_level_int = 0
+    current_level_int = 1
     escape_screen_active = 0
     removed_lines = 0
+    level_threshold = 2000
     
     
 
@@ -167,7 +168,9 @@ def load_game_surface():
                     for column_overwrite in range(GAME_W):
                         game_field[column_overwrite][row_overwrite] = 0
                         game_field[column_overwrite][row_overwrite] = game_field[column_overwrite][row_overwrite-1]
-                        
+
+
+        # Scoring                
         if(removed_lines == 0):
             pass
         elif (removed_lines == 4):
@@ -184,6 +187,12 @@ def load_game_surface():
             score_int += 200
 
         
+
+        # Leveling
+        if (score_int > level_threshold):
+            current_level_int += 1
+            level_threshold += 2000
+            game_field = list(list(0 for h in range(GAME_H))for W in range(GAME_W))
 
         if escape_screen_active:
             clock_count = 0
