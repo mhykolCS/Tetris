@@ -17,6 +17,7 @@ def load_game_surface():
     lines_eliminated_int = 0
     current_level_int = 0
     escape_screen_active = 0
+    removed_lines = 0
     
     
 
@@ -150,6 +151,7 @@ def load_game_surface():
                     pygame.draw.rect(WINDOW, GRAY, old)
 
         # Clear Lines
+        
         for row in range(GAME_H-1, 0, -1):
             count = 0
             for column in range(GAME_W):
@@ -159,11 +161,29 @@ def load_game_surface():
                     count = 0
 
             if count == 10:
+                removed_lines += 1
+                lines_eliminated_int += 1
                 for row_overwrite in range(row, 0, -1):
                     for column_overwrite in range(GAME_W):
                         game_field[column_overwrite][row_overwrite] = 0
                         game_field[column_overwrite][row_overwrite] = game_field[column_overwrite][row_overwrite-1]
                         
+        if(removed_lines == 0):
+            pass
+        elif (removed_lines == 4):
+            removed_lines = 0
+            score_int += 2500
+        elif (removed_lines == 3):
+            removed_lines = 0
+            score_int += 1200
+        elif (removed_lines == 2):
+            removed_lines = 0
+            score_int += 500
+        elif (removed_lines == 1):
+            removed_lines = 0
+            score_int += 200
+
+        
 
         if escape_screen_active:
             clock_count = 0
