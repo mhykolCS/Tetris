@@ -152,17 +152,16 @@ def load_game_surface():
         # Clear Lines
             for row in range(GAME_H-1, 0, -1):
                 count = 0
-                for column in range(GAME_W-1):
+                for column in range(GAME_W):
                     if game_field[column][row]:
                         count += 1
                     else:
                         count = 0
-                if count == 9:
-                    for column_overwrite in range(GAME_W-1):
+
+                if count == 10:
+                    for column_overwrite in range(GAME_W):
                         game_field[column_overwrite][row] = 0
-                    for move_row in range(row, 0, -1):
-                        for x in range(GAME_W-1):
-                            game_field[column][move_row] = game_field[column][move_row-1] 
+                    
 
         if escape_screen_active:
             clock_count = 0
