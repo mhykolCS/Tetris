@@ -22,7 +22,7 @@ def load_topscore_surface():
 
     for i in range(10):
         score_curate[i] = str(i+1) + ": " + score_name[i] + " || " + score_number[i]
-        print(score_curate[i])
+
 
     score = [0 for x in range(10)]
 

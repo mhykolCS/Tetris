@@ -19,6 +19,17 @@ def load_game_surface():
     escape_screen_active = 0
     removed_lines = 0
     level_threshold = 2000
+
+    # Loading High Scores
+    score_file = open("data/scores.txt", 'r')
+    score_name = [" " for name in range(10)]
+    score_number = [0 for number in range(10)]
+
+    for i in range(10):
+        score_name[i] = score_file.readline()
+        score_name[i] = score_name[i].strip('\n')
+        score_number[i] = score_file.readline()
+        score_number[i] = score_number[i].strip('\n')
     
     
 
